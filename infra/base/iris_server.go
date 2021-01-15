@@ -27,6 +27,10 @@ func (i *IrisServiceStart) Init(ctx infra.StarterContext) {
 	irisLogger.Install(logrus.StandardLogger())
 }
 
+func (i *IrisServiceStart) Setup(ctx infra.StarterContext) {
+
+}
+
 func (i *IrisServiceStart) Start(ctx infra.StarterContext) {
 	routes := Iris().GetRoutes()
 	for _, route := range routes {
