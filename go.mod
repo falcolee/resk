@@ -1,6 +1,6 @@
 module moyutec.top/resk
 
-go 1.15
+go 1.14
 
 require (
 	github.com/ajg/form v1.5.1 // indirect
@@ -32,6 +32,7 @@ require (
 	github.com/prometheus/common v0.15.0
 	github.com/rifflock/lfshook v0.0.0-20180920164130-b9218ef580f5
 	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/shopspring/decimal v1.2.0
 	github.com/sirupsen/logrus v1.7.0
 	github.com/tietang/props/v3 v3.1.0
 	github.com/valyala/fasthttp v1.19.0 // indirect
