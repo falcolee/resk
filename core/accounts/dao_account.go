@@ -13,7 +13,9 @@ type AccountDao struct {
 func (dao *AccountDao) GetOne(accountNo string) *Account {
 	a := &Account{AccountNo: accountNo}
 	result := dao.runner.Where(a).First(a)
-	if result.Error != nil {
+	if result.RecordNotFound() {
+		return nil
+	} else if result.Error != nil {
 		logrus.Error(result.Error)
 		return nil
 	}
@@ -23,7 +25,9 @@ func (dao *AccountDao) GetOne(accountNo string) *Account {
 func (dao *AccountDao) GetByUserId(userId string, accountType int) *Account {
 	a := &Account{UserId: userId, AccountType: accountType}
 	result := dao.runner.Where(a).First(a)
-	if result.Error != nil {
+	if result.RecordNotFound() {
+		return nil
+	} else if result.Error != nil {
 		logrus.Error(result.Error)
 		return nil
 	}

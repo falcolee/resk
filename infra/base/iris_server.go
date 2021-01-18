@@ -32,12 +32,14 @@ func (i *IrisServiceStart) Setup(ctx infra.StarterContext) {
 }
 
 func (i *IrisServiceStart) Start(ctx infra.StarterContext) {
+	Iris().Logger().SetLevel(ctx.Props().GetDefault("log.level", "info"))
 	routes := Iris().GetRoutes()
 	for _, route := range routes {
 		logrus.Info(route.Trace())
 	}
-	//启动
-	Iris().Run(iris.Addr(":8082"))
+	//启动iris
+	port := ctx.Props().GetDefault("app.server.port", "18080")
+	_ = Iris().Run(iris.Addr(":" + port))
 }
 
 func (i *IrisServiceStart) StartBlocking() bool {
