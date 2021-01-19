@@ -36,5 +36,5 @@ func (dao *AccountLogDao) GetByTradeNo(tradeNo string) *AccountLog {
 func (dao *AccountLogDao) Insert(accountLog *AccountLog) (id int64, err error) {
 	result := dao.runner.Create(accountLog)
 	err = result.Error
-	return accountLog.Id, err
+	return result.RowsAffected, err
 }
